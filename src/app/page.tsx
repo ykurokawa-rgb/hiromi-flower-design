@@ -3,12 +3,16 @@ import { Button } from '@/components/Button'
 import { SectionTitle } from '@/components/SectionTitle'
 import { MvvGrid } from '@/components/MvvGrid'
 import { FlowTimeline } from '@/components/FlowTimeline'
+import { JsonLd } from '@/components/JsonLd'
+import { getWebSiteJsonLd } from '@/lib/structured-data'
 import { TestimonialCard } from '@/components/TestimonialCard'
 import { PLACEHOLDER_TESTIMONIALS } from '@/lib/constants'
 
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={getWebSiteJsonLd()} />
+
       {/* ===== Hero ===== */}
       <section
         className="relative flex min-h-dvh items-center justify-center overflow-hidden pt-[72px] text-center"

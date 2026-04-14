@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { PageHeader, ScrollFadeIn, SectionTitle, Card, FlowTimeline, FAQ, Button } from '@/components'
+import { JsonLd } from '@/components/JsonLd'
+import { getFaqJsonLd } from '@/lib/structured-data'
 
 export const metadata: Metadata = {
   title: 'お花遊びのじかん',
@@ -35,6 +37,8 @@ const PRICING = [
 export default function MenuPage() {
   return (
     <>
+      <JsonLd data={getFaqJsonLd()} />
+
       <PageHeader
         title="お花遊びのじかん"
         subtitle="遊びの計画を立てるように、わくわくしながらご覧ください。"
