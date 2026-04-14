@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { ScrollFadeIn } from '@/components/ScrollFadeIn'
 import { Button } from '@/components/Button'
 import { SectionTitle } from '@/components/SectionTitle'
@@ -37,14 +38,15 @@ export default function HomePage() {
           </ScrollFadeIn>
 
           <ScrollFadeIn>
-            <div
-              className="mx-auto mb-8 flex h-[280px] w-[280px] items-center justify-center rounded-full text-6xl opacity-20"
-              style={{
-                background:
-                  'linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%)',
-              }}
-            >
-              🌸
+            <div className="mx-auto mb-8 h-[250px] w-[250px] overflow-hidden rounded-full shadow-hover md:h-[300px] md:w-[300px]">
+              <Image
+                src="/images/hero-sunflower.jpg"
+                alt="ひまわりとカラーの夏アレンジメント"
+                width={1108}
+                height={1477}
+                className="h-full w-full object-cover"
+                priority
+              />
             </div>
           </ScrollFadeIn>
 

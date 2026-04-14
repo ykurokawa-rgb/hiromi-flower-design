@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { trackTrialClick, trackLineClick } from '@/lib/ga'
 
 type Variant = 'primary' | 'outline' | 'line'
 
@@ -7,6 +10,7 @@ type Props = {
   variant?: Variant
   children: React.ReactNode
   className?: string
+  trackLabel?: string
 }
 
 const variantStyles: Record<Variant, string> = {
@@ -17,11 +21,21 @@ const variantStyles: Record<Variant, string> = {
   line: 'bg-[#06C755] text-white shadow-[0_4px_16px_rgba(6,199,85,0.2)] hover:bg-[#05b34d] hover:-translate-y-0.5',
 }
 
-export function Button({ href, variant = 'primary', children, className = '' }: Props) {
+export function Button({ href, variant = 'primary', children, className = '', trackLabel }: Props) {
+  const handleClick = () => {
+    const label = trackLabel || href
+    if (variant === 'line') {
+      trackLineClick(label)
+    } else if (href === '/contact' && variant === 'primary') {
+      trackTrialClick(label)
+    }
+  }
+
   return (
     <Link
       href={href}
-      className={`inline-flex items-center gap-2 rounded-full px-8 py-3.5 font-display text-sm font-medium transition-all duration-300 ${variantStyles[variant]} ${className}`}
+      onClick={handleClick}
+      className={`inline-flex items-center gap-2 rounded-full px-8 py-3.5 font-display text-sm font-medium transition-all duration-300 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:outline-none ${variantStyles[variant]} ${className}`}
     >
       {children}
     </Link>

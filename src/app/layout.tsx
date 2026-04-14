@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Noto_Sans_JP, Zen_Maru_Gothic } from 'next/font/google'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import { SkipLink } from '@/components/SkipLink'
 import { GoogleAnalytics } from '@/components/GoogleAnalytics'
 import { JsonLd } from '@/components/JsonLd'
 import { getLocalBusinessJsonLd } from '@/lib/structured-data'
@@ -46,10 +47,11 @@ export default function RootLayout({
   return (
     <html lang="ja" className={`${notoSansJP.variable} ${zenMaruGothic.variable}`}>
       <body className="flex min-h-dvh flex-col">
+        <SkipLink />
         <GoogleAnalytics />
         <JsonLd data={getLocalBusinessJsonLd()} />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { FAQ_ITEMS } from '@/lib/constants'
+import { trackFaqOpen } from '@/lib/ga'
 
 export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
@@ -15,7 +16,12 @@ export function FAQ() {
         >
           <button
             className="flex w-full items-center gap-3 px-6 py-5 text-left font-display text-sm font-medium text-text-main transition-colors duration-300 hover:bg-surface-alt"
-            onClick={() => setOpenIndex(openIndex === i ? null : i)}
+            aria-expanded={openIndex === i}
+            onClick={() => {
+              const isOpening = openIndex !== i
+              setOpenIndex(isOpening ? i : null)
+              if (isOpening) trackFaqOpen(item.question)
+            }}
           >
             <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-xs text-white">
               Q

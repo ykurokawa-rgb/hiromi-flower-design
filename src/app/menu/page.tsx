@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { PageHeader, ScrollFadeIn, SectionTitle, Card, FlowTimeline, FAQ, Button } from '@/components'
 import { JsonLd } from '@/components/JsonLd'
 import { getFaqJsonLd } from '@/lib/structured-data'
@@ -12,17 +13,17 @@ export const metadata: Metadata = {
 
 const MENUS = [
   {
-    icon: '🌺',
+    image: '/images/menu-spring-arrange.jpg',
     title: '季節のアレンジメント',
     body: '旬のお花を使ったテーブルアレンジメント。色合わせや器選びも自由に楽しめます。',
   },
   {
-    icon: '🌿',
+    image: '/images/menu-ume-newyear.jpg',
     title: 'リース & スワッグ',
     body: '季節の草花やドライフラワーを使ったリースやスワッグ作り。お部屋に飾って長く楽しめます。',
   },
   {
-    icon: '💐',
+    image: '/images/gallery-04-spring-swag.jpg',
     title: '季節のブーケ',
     body: 'お花屋さんのように花束を束ねる体験。大切な方へのプレゼントにもぴったりです。',
   },
@@ -49,10 +50,21 @@ export default function MenuPage() {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {MENUS.map((m) => (
               <ScrollFadeIn key={m.title}>
-                <Card className="p-10 text-center">
-                  <div className="mb-2 text-3xl">{m.icon}</div>
-                  <h3 className="mb-2 font-display text-base font-medium">{m.title}</h3>
-                  <p className="text-sm text-text-sub">{m.body}</p>
+                <Card className="overflow-hidden text-center">
+                  <div className="h-48 overflow-hidden">
+                    <Image
+                      src={m.image}
+                      alt={m.title}
+                      width={1108}
+                      height={1477}
+                      className="h-full w-full object-cover"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="mb-2 font-display text-base font-medium">{m.title}</h3>
+                    <p className="text-sm text-text-sub">{m.body}</p>
+                  </div>
                 </Card>
               </ScrollFadeIn>
             ))}

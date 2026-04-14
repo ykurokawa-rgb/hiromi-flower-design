@@ -1,17 +1,22 @@
 'use client'
 
 import { useState } from 'react'
+import { trackFormSubmit } from '@/lib/ga'
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    const form = e.target as HTMLFormElement
+    const formData = new FormData(form)
+    const purposes = formData.getAll('purpose').join(', ')
+    trackFormSubmit(purposes || 'unspecified')
     // TODO: formrun 連携に差し替え
     setSubmitted(true)
     setTimeout(() => {
       setSubmitted(false)
-      ;(e.target as HTMLFormElement).reset()
+      form.reset()
     }, 3000)
   }
 

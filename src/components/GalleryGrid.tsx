@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import Image from 'next/image'
+import { trackGalleryView } from '@/lib/ga'
 
 type GalleryItem = {
   src: string
@@ -20,7 +21,20 @@ export function GalleryGrid({ items }: Props) {
   const openLightbox = (i: number) => {
     setLightboxIndex(i)
     document.body.style.overflow = 'hidden'
+    trackGalleryView(items[i].alt)
   }
+
+  // Keyboard navigation for lightbox
+  useEffect(() => {
+    if (lightboxIndex === null) return
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeLightbox()
+      if (e.key === 'ArrowRight') goNext()
+      if (e.key === 'ArrowLeft') goPrev()
+    }
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  })
 
   const closeLightbox = () => {
     setLightboxIndex(null)
