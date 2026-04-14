@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import { PageHeader, ScrollFadeIn, SectionTitle, TestimonialCard, Button } from '@/components'
 import { GalleryGrid } from '@/components/GalleryGrid'
 import { TESTIMONIALS } from '@/lib/constants'

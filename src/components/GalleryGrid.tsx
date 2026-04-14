@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import { trackGalleryView } from '@/lib/ga'
 
@@ -18,11 +18,33 @@ type Props = {
 export function GalleryGrid({ items }: Props) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
-  const openLightbox = (i: number) => {
-    setLightboxIndex(i)
-    document.body.style.overflow = 'hidden'
-    trackGalleryView(items[i].alt)
-  }
+  const closeLightbox = useCallback(() => {
+    setLightboxIndex(null)
+  }, [])
+
+  const goNext = useCallback(() => {
+    setLightboxIndex((prev) => (prev !== null ? (prev + 1) % items.length : null))
+  }, [items.length])
+
+  const goPrev = useCallback(() => {
+    setLightboxIndex((prev) => (prev !== null ? (prev - 1 + items.length) % items.length : null))
+  }, [items.length])
+
+  const openLightbox = useCallback(
+    (i: number) => {
+      setLightboxIndex(i)
+      trackGalleryView(items[i].alt)
+    },
+    [items],
+  )
+
+  // Toggle body overflow
+  useEffect(() => {
+    document.body.style.overflow = lightboxIndex !== null ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [lightboxIndex])
 
   // Keyboard navigation for lightbox
   useEffect(() => {
@@ -34,24 +56,7 @@ export function GalleryGrid({ items }: Props) {
     }
     window.addEventListener('keydown', handleKey)
     return () => window.removeEventListener('keydown', handleKey)
-  })
-
-  const closeLightbox = () => {
-    setLightboxIndex(null)
-    document.body.style.overflow = ''
-  }
-
-  const goNext = () => {
-    if (lightboxIndex !== null) {
-      setLightboxIndex((lightboxIndex + 1) % items.length)
-    }
-  }
-
-  const goPrev = () => {
-    if (lightboxIndex !== null) {
-      setLightboxIndex((lightboxIndex - 1 + items.length) % items.length)
-    }
-  }
+  }, [lightboxIndex, closeLightbox, goNext, goPrev])
 
   return (
     <>
@@ -81,7 +86,6 @@ export function GalleryGrid({ items }: Props) {
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-4"
           onClick={closeLightbox}
         >
-          {/* Close button */}
           <button
             className="absolute top-4 right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-xl text-white backdrop-blur-sm transition-colors hover:bg-white/40"
             onClick={closeLightbox}
@@ -90,7 +94,6 @@ export function GalleryGrid({ items }: Props) {
             ✕
           </button>
 
-          {/* Previous */}
           <button
             className="absolute left-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-xl text-white backdrop-blur-sm transition-colors hover:bg-white/40"
             onClick={(e) => {
@@ -102,7 +105,6 @@ export function GalleryGrid({ items }: Props) {
             ‹
           </button>
 
-          {/* Image */}
           <div className="relative max-h-[85vh] max-w-[90vw]" onClick={(e) => e.stopPropagation()}>
             <Image
               src={items[lightboxIndex].src}
@@ -115,7 +117,6 @@ export function GalleryGrid({ items }: Props) {
             />
           </div>
 
-          {/* Next */}
           <button
             className="absolute right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-xl text-white backdrop-blur-sm transition-colors hover:bg-white/40"
             onClick={(e) => {
@@ -127,7 +128,6 @@ export function GalleryGrid({ items }: Props) {
             ›
           </button>
 
-          {/* Counter */}
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-white/20 px-4 py-1 text-sm text-white backdrop-blur-sm">
             {lightboxIndex + 1} / {items.length}
           </div>

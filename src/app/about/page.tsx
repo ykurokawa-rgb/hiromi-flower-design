@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { PageHeader, ScrollFadeIn, SectionTitle, MvvGrid, Button } from '@/components'
 import { INSTRUCTOR } from '@/lib/constants'
 
@@ -62,11 +63,17 @@ export default function AboutPage() {
           <ScrollFadeIn>
             <div className="flex flex-col items-center gap-12 md:flex-row md:items-start">
               {/* Photo placeholder */}
-              <div className="flex h-[300px] w-[240px] shrink-0 items-center justify-center overflow-hidden bg-surface-alt text-5xl text-text-sub"
+              <div className="h-[300px] w-[240px] shrink-0 overflow-hidden bg-surface-alt"
                 style={{ borderRadius: '120px 120px 14px 14px' }}
               >
-                {/* 写真に差し替え: <Image src="/images/hiromi.jpg" ... /> */}
-                👩
+                <Image
+                  src="/images/gallery-01-spring-pastel.jpg"
+                  alt="渡邉博美 - ひろみフラワーデザイン教室講師"
+                  width={1108}
+                  height={1477}
+                  className="h-full w-full object-cover"
+                  sizes="240px"
+                />
               </div>
               <div className="text-center md:text-left">
                 <h3 className="mb-1 font-display text-xl font-medium">
