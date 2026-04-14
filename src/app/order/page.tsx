@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { PageHeader, ScrollFadeIn, SectionTitle, Card, FlowTimeline, Button } from '@/components'
+import { PageHeader, ScrollFadeIn, SectionTitle, Card, Button } from '@/components'
+import { GalleryGrid } from '@/components/GalleryGrid'
 
 export const metadata: Metadata = {
   title: 'オーダーメイド',
@@ -32,13 +33,16 @@ const ORDER_FLOW = [
   { step: 4, title: 'お引き渡し', description: '配送または手渡しでお届けします。' },
 ]
 
-const GALLERY_PLACEHOLDERS = [
-  { emoji: '💐', h: 300 },
-  { emoji: '🌹', h: 240 },
-  { emoji: '🌺', h: 280 },
-  { emoji: '🌸', h: 320 },
-  { emoji: '🌻', h: 260 },
-  { emoji: '🌷', h: 220 },
+const ORDER_GALLERY = [
+  { src: '/images/order-01-red-rose.jpg', alt: '赤バラのエレガントアレンジメント', width: 1108, height: 1477 },
+  { src: '/images/order-05-gift-colorful.jpg', alt: 'カラフルなギフトアレンジメント', width: 1108, height: 1477 },
+  { src: '/images/order-03-orange-rose.jpg', alt: 'オレンジローズのシックなアレンジ', width: 1108, height: 1477 },
+  { src: '/images/order-04-thankyou.jpg', alt: '感謝を込めたThank Youアレンジ', width: 1108, height: 1477 },
+  { src: '/images/order-07-christmas-white.jpg', alt: 'ホワイトローズのクリスマスツリー', width: 960, height: 1706 },
+  { src: '/images/order-02-red-rose-white.jpg', alt: '赤バラと白枝のモダンアレンジ', width: 1108, height: 1477 },
+  { src: '/images/order-06-celebration-red.jpg', alt: 'お祝いのレッドカーネーション', width: 1108, height: 1477 },
+  { src: '/images/order-09-red-white.jpg', alt: '赤カーネーションと白アルストロメリア', width: 1108, height: 1477 },
+  { src: '/images/order-08-christmas-tree.jpg', alt: 'ホワイトローズのクリスマスツリー', width: 960, height: 1706 },
 ]
 
 export default function OrderPage() {
@@ -91,28 +95,8 @@ export default function OrderPage() {
         <div className="mx-auto max-w-[1080px] px-6">
           <SectionTitle title="過去のオーダー作品" subtitle="実際にお作りした作品の一部をご紹介します。" />
           <ScrollFadeIn>
-            <div className="masonry">
-              {GALLERY_PLACEHOLDERS.map((item, i) => (
-                <div
-                  key={i}
-                  className="masonry-item overflow-hidden rounded-[14px] shadow-soft transition-transform duration-300 hover:scale-[1.02]"
-                >
-                  <div
-                    className="flex items-center justify-center text-4xl text-text-sub"
-                    style={{
-                      height: item.h,
-                      background: 'linear-gradient(135deg, var(--color-surface-alt), var(--color-bg))',
-                    }}
-                  >
-                    {item.emoji}
-                  </div>
-                </div>
-              ))}
-            </div>
+            <GalleryGrid items={ORDER_GALLERY} />
           </ScrollFadeIn>
-          <p className="mt-8 text-center text-xs text-text-sub">
-            ※ 実際のオーダー作品写真が入ります。
-          </p>
         </div>
       </section>
 

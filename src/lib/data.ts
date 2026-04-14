@@ -6,7 +6,7 @@
  * Phase 3 完了後にCMS連携を有効化する。
  */
 
-import { PLACEHOLDER_TESTIMONIALS } from './constants'
+import { TESTIMONIALS } from './constants'
 
 const CMS_CONFIGURED =
   !!process.env.MICROCMS_SERVICE_DOMAIN && !!process.env.MICROCMS_API_KEY
@@ -28,7 +28,7 @@ export async function getTestimonialsData(): Promise<TestimonialData[]> {
       console.warn('microCMS fetch failed, using fallback:', e)
     }
   }
-  return PLACEHOLDER_TESTIMONIALS.map((t) => ({ body: t.body, age: t.age }))
+  return TESTIMONIALS.map((t) => ({ body: t.body, age: t.age }))
 }
 
 // ===== Gallery =====

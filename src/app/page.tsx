@@ -6,7 +6,7 @@ import { FlowTimeline } from '@/components/FlowTimeline'
 import { JsonLd } from '@/components/JsonLd'
 import { getWebSiteJsonLd } from '@/lib/structured-data'
 import { TestimonialCard } from '@/components/TestimonialCard'
-import { PLACEHOLDER_TESTIMONIALS } from '@/lib/constants'
+import { TESTIMONIALS } from '@/lib/constants'
 
 export default function HomePage() {
   return (
@@ -135,7 +135,7 @@ export default function HomePage() {
             subtitle="教室に通うみなさんから届いた、うれしいお声をご紹介します。"
           />
           <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-            {PLACEHOLDER_TESTIMONIALS.slice(0, 3).map((t, i) => (
+            {TESTIMONIALS.slice(0, 3).map((t, i) => (
               <ScrollFadeIn key={i}>
                 <TestimonialCard body={t.body} age={t.age} />
               </ScrollFadeIn>

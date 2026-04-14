@@ -52,22 +52,29 @@ export default function ContactPage() {
                     <div className="flex gap-4">
                       <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-surface-alt text-lg">🏠</div>
                       <div>
-                        <h4 className="text-sm font-medium">教室所在地</h4>
-                        <p className="text-xs text-text-sub">〒○○○-○○○○<br />○○県○○市○○町○-○-○</p>
+                        <h4 className="text-sm font-medium">教室（3か所）</h4>
+                        <p className="text-xs text-text-sub">寄居教室<br />ルネ大泉学園教室<br />大泉レトリックカルチャー教室</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-4">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-surface-alt text-lg">💰</div>
+                      <div>
+                        <h4 className="text-sm font-medium">月謝</h4>
+                        <p className="text-xs text-text-sub">月5,000円（税込・花材費込み）</p>
                       </div>
                     </div>
                     <div className="flex gap-4">
                       <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-surface-alt text-lg">🕐</div>
                       <div>
-                        <h4 className="text-sm font-medium">開催日時</h4>
-                        <p className="text-xs text-text-sub">○曜日 ○○:○○〜○○:○○<br />※ 日程はお気軽にご相談ください</p>
+                        <h4 className="text-sm font-medium">所要時間</h4>
+                        <p className="text-xs text-text-sub">約2時間<br />※ 日程はお気軽にご相談ください</p>
                       </div>
                     </div>
                     <div className="flex gap-4">
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-surface-alt text-lg">🚗</div>
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-surface-alt text-lg">👜</div>
                       <div>
-                        <h4 className="text-sm font-medium">アクセス</h4>
-                        <p className="text-xs text-text-sub">駐車場あり（○台）<br />最寄り駅：○○駅から徒歩○分</p>
+                        <h4 className="text-sm font-medium">持ち物</h4>
+                        <p className="text-xs text-text-sub">手ぶらでOK！<br />エプロン・ハサミは貸し出しいたします</p>
                       </div>
                     </div>
                   </div>

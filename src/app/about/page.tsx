@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { PageHeader, ScrollFadeIn, SectionTitle, MvvGrid, Button } from '@/components'
+import { INSTRUCTOR } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: '教室について',
@@ -69,32 +70,13 @@ export default function AboutPage() {
               </div>
               <div className="text-center md:text-left">
                 <h3 className="mb-1 font-display text-xl font-medium">
-                  渡邉 博美（わたなべ ひろみ）
+                  {INSTRUCTOR.name}（{INSTRUCTOR.nameKana}）
                 </h3>
-                <p className="mb-4 text-sm text-text-sub">フラワーデザイナー・お花歴33年</p>
+                <p className="mb-4 text-sm text-text-sub">{INSTRUCTOR.role}</p>
                 <div className="space-y-4 text-sm leading-[2]">
-                  <p>
-                    こんにちは、渡邉博美です。
-                  </p>
-                  <p>
-                    お花歴33年になりますが、ここでは「先生」ではなく、
-                    皆さんのお花仲間になりたいと思っています。
-                  </p>
-                  <p>
-                    お花を始めた頃から変わらないのは、「お花って楽しい！」という
-                    シンプルな気持ち。花を触って、色を選んで、デザインを考えて…
-                    その時間がただただ楽しくて、気づいたら33年が経っていました。
-                  </p>
-                  <p>
-                    この教室では、型にはまった「正しいアレンジメント」を教えるのではなく、
-                    皆さんが心のおもむくままに、自由にお花を楽しめる時間を大切にしています。
-                    迷った時には、33年分の「引き出し」からアイデアをお出しします。
-                    それが私にできる、仲間としてのお手伝いです。
-                  </p>
-                  <p>
-                    色々な年代の方が集まって、お花を通じて笑顔になる。
-                    そんな温かい時間を、あなたとも一緒に過ごせたらうれしいです。
-                  </p>
+                  {INSTRUCTOR.greeting.split('\n\n').map((paragraph, i) => (
+                    <p key={i}>{paragraph}</p>
+                  ))}
                 </div>
               </div>
             </div>

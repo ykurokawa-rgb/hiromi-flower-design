@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { PageHeader, ScrollFadeIn, SectionTitle, Card, FlowTimeline, FAQ, Button } from '@/components'
 import { JsonLd } from '@/components/JsonLd'
 import { getFaqJsonLd } from '@/lib/structured-data'
+import { PRICING, CLASSROOMS } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'お花遊びのじかん',
@@ -27,12 +28,6 @@ const MENUS = [
   },
 ]
 
-const PRICING = [
-  { label: '参加費', value: '○○円（花材費・お茶代込み）', note: '※都度払い制' },
-  { label: '所要時間', value: '約○○時間', note: 'ゆっくりお茶を飲む時間を含みます' },
-  { label: '持ち物', value: '手ぶらでOK！', note: 'エプロンやハサミは貸し出しいたします' },
-  { label: '開催日', value: '○曜日 ○○:○○〜', note: '※日程はお気軽にご相談ください' },
-]
 
 export default function MenuPage() {
   return (
@@ -87,6 +82,24 @@ export default function MenuPage() {
               </tbody>
             </table>
           </ScrollFadeIn>
+        </div>
+      </section>
+
+      {/* Classrooms */}
+      <section className="py-20">
+        <div className="mx-auto max-w-[1080px] px-6">
+          <SectionTitle title="3つの教室" subtitle="お近くの教室、ご都合の良い教室をお選びいただけます。" />
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {CLASSROOMS.map((c) => (
+              <ScrollFadeIn key={c.name}>
+                <Card className="p-8 text-center">
+                  <div className="mb-2 text-2xl">📍</div>
+                  <h3 className="mb-2 font-display text-base font-medium">{c.name}</h3>
+                  <p className="text-sm text-text-sub">{c.description}</p>
+                </Card>
+              </ScrollFadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
