@@ -1,7 +1,15 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  // microCMS の画像CDNドメインを許可
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.microcms-assets.io',
+      },
+    ],
+  },
+}
 
-export default nextConfig;
+export default nextConfig
