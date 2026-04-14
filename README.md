@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ひろみフラワーデザイン教室 公式HP
 
-## Getting Started
+「お花で遊ぶ」をコンセプトにしたフラワーアレンジメント教室の公式サイトです。
 
-First, run the development server:
+## 技術スタック
+
+- **Framework:** Next.js 16 (App Router / SSG)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4
+- **CMS:** microCMS
+- **Form:** formrun
+- **Hosting:** Vercel
+- **Analytics:** Google Analytics 4
+
+## セットアップ
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
+cp .env.local.example .env.local
+# .env.local を編集して各種キーを設定
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 環境変数
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| 変数名 | 説明 |
+|--------|------|
+| `MICROCMS_SERVICE_DOMAIN` | microCMS サービスドメイン |
+| `MICROCMS_API_KEY` | microCMS API キー |
+| `NEXT_PUBLIC_SITE_URL` | サイト URL |
+| `NEXT_PUBLIC_FORMRUN_URL` | formrun フォーム送信先 |
+| `NEXT_PUBLIC_GA_ID` | Google Analytics 測定 ID |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ページ構成
 
-## Learn More
+| パス | ページ |
+|------|--------|
+| `/` | トップページ |
+| `/about` | 教室について |
+| `/menu` | お花遊びのじかん |
+| `/gallery` | ギャラリー |
+| `/order` | オーダーメイド |
+| `/contact` | お問い合わせ |
+| `/privacy` | プライバシーポリシー |
 
-To learn more about Next.js, take a look at the following resources:
+## コマンド
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+pnpm dev      # 開発サーバー
+pnpm build    # ビルド
+pnpm start    # プロダクションサーバー
+pnpm lint     # ESLint
+```
