@@ -4,7 +4,7 @@ export const SITE_NAME = 'ひろみフラワーデザイン教室'
 export const SITE_DESCRIPTION =
   'ひろみフラワーデザイン教室は「お花で遊ぶ」をコンセプトに、すべての年代の方が笑顔になれるフラワーアレンジメント教室です。'
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://hiromi-flower.com'
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://hiromi-flower.jp'
 
 export const SLOGAN = '一緒に、お花で遊びませんか。心ほどける季節のアレンジメント。'
 
