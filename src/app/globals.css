@@ -1,26 +1,98 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ===================================
+   ひろみフラワーデザイン教室
+   Design System - Tailwind CSS v4
+   =================================== */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* --- Colors --- */
+  --color-bg: #FAF9F5;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F5F2EB;
+  --color-text-main: #4A3E3D;
+  --color-text-sub: #8C8582;
+  --color-border: #E0DCD3;
+  --color-primary: #E08A82;
+  --color-primary-hover: #d4736a;
+  --color-accent: #EAC775;
+  --color-success: #8BA888;
+  --color-critical: #B86464;
+
+  /* --- Shadows --- */
+  --shadow-soft: 0 2px 16px rgba(74, 62, 61, 0.06);
+  --shadow-hover: 0 8px 32px rgba(74, 62, 61, 0.1);
+  --shadow-primary: 0 4px 16px rgba(224, 138, 130, 0.25);
+
+  /* --- Border Radius --- */
+  --radius-card: 14px;
+  --radius-pill: 999px;
+  --radius-arch-top: 120px 120px 14px 14px;
+
+  /* --- Fonts --- */
+  --font-sans: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  --font-display: 'Zen Maru Gothic', 'Rounded Mplus 1c', 'Noto Sans JP', sans-serif;
+
+  /* --- Transitions --- */
+  --transition-base: 0.3s ease;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* --- Base Styles --- */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text-main);
+  font-family: var(--font-sans);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Scroll Animation --- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- FAQ Accordion --- */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 300px;
+}
+
+/* --- Masonry Layout --- */
+.masonry {
+  columns: 3;
+  column-gap: 16px;
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  .masonry {
+    columns: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .masonry {
+    columns: 1;
+  }
 }
