@@ -96,7 +96,7 @@ export default function HomePage() {
           <SectionTitle title="お花歴33年の「遊び仲間」" />
           <ScrollFadeIn>
             <p className="mx-auto max-w-[720px] text-base leading-[2]">
-              こんにちは、渡邉博美です。
+              こんにちは、ひろみです。
               <br />
               お花にふれて33年。ずっと変わらないのは「お花って楽しい！」という気持ちです。
               <br />

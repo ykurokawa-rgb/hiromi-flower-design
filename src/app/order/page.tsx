@@ -6,7 +6,7 @@ import { LINE_URL } from '@/lib/constants'
 export const metadata: Metadata = {
   title: 'オーダーメイド',
   description:
-    'ウェディング、お祝い、ビジネスシーンなど、お花歴33年の渡邉博美がご依頼者さまの想いを形にします。',
+    'ウェディング、お祝い、ビジネスシーンなど、お花歴33年のひろみがご依頼者さまの想いを形にします。',
 }
 
 const SCENES = [

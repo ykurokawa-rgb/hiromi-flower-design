@@ -6,7 +6,7 @@ import { INSTRUCTOR } from '@/lib/constants'
 export const metadata: Metadata = {
   title: '教室について',
   description:
-    'ひろみフラワーデザイン教室の想いと、講師・渡邉博美のプロフィールをご紹介します。',
+    'ひろみフラワーデザイン教室の想いと、講師・ひろみのプロフィールをご紹介します。',
 }
 
 export default function AboutPage() {
@@ -59,7 +59,7 @@ export default function AboutPage() {
       {/* Profile */}
       <section className="py-20">
         <div className="mx-auto max-w-[1080px] px-6">
-          <SectionTitle title="講師プロフィール" subtitle="あなたのお花仲間、渡邉博美です。" />
+          <SectionTitle title="講師プロフィール" subtitle="あなたのお花仲間、ひろみです。" />
           <ScrollFadeIn>
             <div className="flex flex-col items-center gap-12 md:flex-row md:items-start">
               {/* Photo placeholder */}
@@ -68,7 +68,7 @@ export default function AboutPage() {
               >
                 <Image
                   src="/images/gallery-01-spring-pastel.jpg"
-                  alt="渡邉博美 - ひろみフラワーデザイン教室講師"
+                  alt="ひろみ - ひろみフラワーデザイン教室講師"
                   width={1108}
                   height={1477}
                   className="h-full w-full object-cover"
@@ -77,7 +77,7 @@ export default function AboutPage() {
               </div>
               <div className="text-center md:text-left">
                 <h3 className="mb-1 font-display text-xl font-medium">
-                  {INSTRUCTOR.name}（{INSTRUCTOR.nameKana}）
+                  {INSTRUCTOR.name}
                 </h3>
                 <p className="mb-4 text-sm text-text-sub">{INSTRUCTOR.role}</p>
                 <div className="space-y-4 text-sm leading-[2]">

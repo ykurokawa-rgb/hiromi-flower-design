@@ -133,10 +133,9 @@ export const PRICING = [
 
 /** 講師プロフィール */
 export const INSTRUCTOR = {
-  name: '渡邉 博美',
-  nameKana: 'わたなべ ひろみ',
+  name: 'ひろみ',
   role: 'フラワーデザイナー・お花歴33年',
-  greeting: `こんにちは、渡邉博美です。
+  greeting: `こんにちは、ひろみです。
 
 お花歴33年になりますが、ここでは「先生」ではなく、皆さんのお花仲間になりたいと思っています。
 
