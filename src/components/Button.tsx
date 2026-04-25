@@ -31,10 +31,13 @@ export function Button({ href, variant = 'primary', children, className = '', tr
     }
   }
 
+  const isExternal = /^https?:\/\//.test(href)
+
   return (
     <Link
       href={href}
       onClick={handleClick}
+      {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       className={`inline-flex items-center gap-2 rounded-full px-8 py-3.5 font-display text-sm font-medium transition-all duration-300 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:outline-none ${variantStyles[variant]} ${className}`}
     >
       {children}

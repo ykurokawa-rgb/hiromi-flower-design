@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { PageHeader, ScrollFadeIn, SectionTitle, TestimonialCard, Button } from '@/components'
 import { GalleryGrid } from '@/components/GalleryGrid'
-import { TESTIMONIALS } from '@/lib/constants'
+import { TESTIMONIALS, LINE_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'ギャラリー',
@@ -70,7 +70,7 @@ export default function GalleryPage() {
           <ScrollFadeIn>
             <div className="flex flex-wrap justify-center gap-4">
               <Button href="/contact">体験に遊びに行く</Button>
-              <Button href="/contact" variant="line">LINEで気軽に聞いてみる</Button>
+              <Button href={LINE_URL} variant="line">LINEで気軽に聞いてみる</Button>
             </div>
           </ScrollFadeIn>
         </div>

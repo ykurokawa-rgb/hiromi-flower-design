@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { PageHeader, ScrollFadeIn, SectionTitle, Card, Button } from '@/components'
 import { GalleryGrid } from '@/components/GalleryGrid'
+import { LINE_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'オーダーメイド',
@@ -128,7 +129,7 @@ export default function OrderPage() {
           <ScrollFadeIn>
             <div className="flex flex-wrap justify-center gap-4">
               <Button href="/contact">オーダーを相談する</Button>
-              <Button href="/contact" variant="line">LINEで相談する</Button>
+              <Button href={LINE_URL} variant="line">LINEで相談する</Button>
             </div>
           </ScrollFadeIn>
         </div>

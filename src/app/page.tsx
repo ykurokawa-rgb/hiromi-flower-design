@@ -7,7 +7,7 @@ import { FlowTimeline } from '@/components/FlowTimeline'
 import { JsonLd } from '@/components/JsonLd'
 import { getWebSiteJsonLd } from '@/lib/structured-data'
 import { TestimonialCard } from '@/components/TestimonialCard'
-import { TESTIMONIALS } from '@/lib/constants'
+import { TESTIMONIALS, LINE_URL } from '@/lib/constants'
 
 export default function HomePage() {
   return (
@@ -161,7 +161,7 @@ export default function HomePage() {
           <ScrollFadeIn>
             <div className="flex flex-wrap justify-center gap-4">
               <Button href="/contact">体験に遊びに行く</Button>
-              <Button href="/contact" variant="line">
+              <Button href={LINE_URL} variant="line">
                 LINEで気軽に聞いてみる
               </Button>
             </div>

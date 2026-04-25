@@ -6,6 +6,8 @@ export const SITE_DESCRIPTION =
 
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://hiromi-flower.jp'
 
+export const LINE_URL = 'https://lin.ee/PxOIi82'
+
 export const SLOGAN = '一緒に、お花で遊びませんか。心ほどける季節のアレンジメント。'
 
 /** ナビゲーションリンク */

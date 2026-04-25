@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { PageHeader, ScrollFadeIn, SectionTitle, Card, FlowTimeline, FAQ, Button } from '@/components'
 import { JsonLd } from '@/components/JsonLd'
 import { getFaqJsonLd } from '@/lib/structured-data'
-import { PRICING, CLASSROOMS } from '@/lib/constants'
+import { PRICING, CLASSROOMS, LINE_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'お花遊びのじかん',
@@ -145,7 +145,7 @@ export default function MenuPage() {
           <ScrollFadeIn>
             <div className="flex flex-wrap justify-center gap-4">
               <Button href="/contact">体験に遊びに行く</Button>
-              <Button href="/contact" variant="line">LINEで気軽に聞いてみる</Button>
+              <Button href={LINE_URL} variant="line">LINEで気軽に聞いてみる</Button>
             </div>
           </ScrollFadeIn>
         </div>

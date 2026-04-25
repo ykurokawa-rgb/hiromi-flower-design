@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { PageHeader, ScrollFadeIn, SectionTitle, Button } from '@/components'
+import { LINE_URL } from '@/lib/constants'
 import { ContactForm } from './_components/ContactForm'
 
 export const metadata: Metadata = {
@@ -21,7 +22,7 @@ export default function ContactPage() {
         <div className="mx-auto max-w-[1080px] px-6 text-center">
           <SectionTitle title="LINEが一番かんたんです" subtitle="お友だち登録して、お気軽にメッセージをお送りください。" />
           <ScrollFadeIn>
-            <Button href="#" variant="line" className="text-base! px-12! py-4!">
+            <Button href={LINE_URL} variant="line" className="text-base! px-12! py-4!">
               💬 LINEで気軽に連絡する
             </Button>
           </ScrollFadeIn>
