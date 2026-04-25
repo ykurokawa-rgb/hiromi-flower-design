@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import { PageHeader, ScrollFadeIn, SectionTitle, TestimonialCard, Button } from '@/components'
 import { GalleryGrid } from '@/components/GalleryGrid'
-import { TESTIMONIALS, LINE_URL } from '@/lib/constants'
+import { TESTIMONIALS, LINE_URL, INSTAGRAM_URL } from '@/lib/constants'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'ギャラリー',
@@ -39,6 +40,27 @@ export default function GalleryPage() {
           />
           <ScrollFadeIn>
             <GalleryGrid items={GALLERY_ITEMS} />
+          </ScrollFadeIn>
+          <ScrollFadeIn>
+            <div className="mt-12 text-center">
+              <p className="mb-4 text-sm text-text-sub">
+                もっと作品をご覧になりたい方は、Instagramもぜひのぞいてみてください。
+              </p>
+              <Link
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagramで作品を見る"
+                className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-primary px-6 py-3 font-display text-sm font-medium text-primary transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary hover:text-white"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                </svg>
+                Instagramで作品を見る
+              </Link>
+            </div>
           </ScrollFadeIn>
         </div>
       </section>

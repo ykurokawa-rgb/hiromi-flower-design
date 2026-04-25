@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
-import { NAV_LINKS, SITE_NAME, LINE_URL } from '@/lib/constants'
+import { NAV_LINKS, SITE_NAME, LINE_URL, INSTAGRAM_URL } from '@/lib/constants'
 import { trackLineClick } from '@/lib/ga'
 
 export function Header() {
@@ -54,6 +54,19 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
+            <Link
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagramを見る"
+              className="flex h-10 w-10 items-center justify-center rounded-full text-text-main transition-all duration-300 hover:-translate-y-0.5 hover:text-primary"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </Link>
             <Link
               href={LINE_URL}
               target="_blank"
@@ -116,6 +129,21 @@ export function Header() {
               {link.label}
             </Link>
           ))}
+          <Link
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={closeMenu}
+            aria-label="Instagramを見る"
+            className="inline-flex items-center gap-2 font-display text-base text-text-main"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+            Instagram
+          </Link>
           <Link
             href={LINE_URL}
             target="_blank"

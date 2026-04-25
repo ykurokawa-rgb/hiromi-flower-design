@@ -8,6 +8,8 @@ export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://hiromi-flow
 
 export const LINE_URL = 'https://lin.ee/PxOIi82'
 
+export const INSTAGRAM_URL = 'https://www.instagram.com/kurohiro1958/'
+
 export const SLOGAN = '一緒に、お花で遊びませんか。心ほどける季節のアレンジメント。'
 
 /** ナビゲーションリンク */
