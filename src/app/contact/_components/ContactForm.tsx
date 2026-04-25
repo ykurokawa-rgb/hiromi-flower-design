@@ -5,19 +5,50 @@ import { trackFormSubmit } from '@/lib/ga'
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const form = e.target as HTMLFormElement
     const formData = new FormData(form)
     const purposes = formData.getAll('purpose').join(', ')
     trackFormSubmit(purposes || 'unspecified')
-    // TODO: formrun 連携に差し替え
-    setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
-      form.reset()
-    }, 3000)
+
+    const payload = {
+      purpose: purposes,
+      name: String(formData.get('name') ?? ''),
+      email: String(formData.get('email') ?? ''),
+      phone: String(formData.get('phone') ?? ''),
+      message: String(formData.get('message') ?? ''),
+    }
+
+    setSubmitting(true)
+    setError(null)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error(data.error || '送信に失敗しました')
+      }
+      setSubmitted(true)
+      setTimeout(() => {
+        setSubmitted(false)
+        form.reset()
+      }, 4000)
+    } catch (err) {
+      setError(
+        err instanceof Error && err.message
+          ? err.message
+          : '送信に失敗しました。お手数ですが、時間をおいて再度お試しいただくか、LINEからご連絡ください。',
+      )
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -102,17 +133,26 @@ export function ContactForm() {
         />
       </div>
 
+      {/* Error */}
+      {error && (
+        <p className="text-sm text-critical" role="alert">
+          {error}
+        </p>
+      )}
+
       {/* Submit */}
       <button
         type="submit"
-        disabled={submitted}
+        disabled={submitted || submitting}
         className={`w-full rounded-full py-3.5 font-display text-sm font-medium text-white transition-all duration-300 ${
           submitted
             ? 'bg-success'
-            : 'bg-primary shadow-primary hover:-translate-y-0.5 hover:bg-primary-hover'
+            : submitting
+              ? 'bg-primary opacity-70'
+              : 'bg-primary shadow-primary hover:-translate-y-0.5 hover:bg-primary-hover'
         }`}
       >
-        {submitted ? '送信しました！' : '送信する'}
+        {submitted ? '送信しました！' : submitting ? '送信中...' : '送信する'}
       </button>
     </form>
   )
