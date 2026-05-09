@@ -104,10 +104,29 @@ export default function MenuPage() {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {CLASSROOMS.map((c) => (
               <ScrollFadeIn key={c.name}>
-                <Card className="p-8 text-center">
-                  <div className="mb-2 text-2xl">📍</div>
-                  <h3 className="mb-2 font-display text-base font-medium">{c.name}</h3>
-                  <p className="text-sm text-text-sub">{c.description}</p>
+                <Card className="flex h-full flex-col p-8">
+                  <div className="mb-2 text-center text-2xl">📍</div>
+                  <h3 className="mb-3 text-center font-display text-base font-medium">{c.name}</h3>
+                  <p className="mb-6 text-center text-sm text-text-sub">{c.description}</p>
+                  <dl className="mt-auto space-y-3 border-t border-border pt-5 text-sm">
+                    <div>
+                      <dt className="mb-1 font-medium text-text">住所</dt>
+                      <dd className="text-text-sub">
+                        <a
+                          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.address)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline-offset-2 hover:underline"
+                        >
+                          {c.address}
+                        </a>
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="mb-1 font-medium text-text">開催日時</dt>
+                      <dd className="text-text-sub">{c.schedule}</dd>
+                    </div>
+                  </dl>
                 </Card>
               </ScrollFadeIn>
             ))}
