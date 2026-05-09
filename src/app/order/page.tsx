@@ -6,24 +6,28 @@ import { LINE_URL } from '@/lib/constants'
 export const metadata: Metadata = {
   title: 'オーダーメイド',
   description:
-    'ウェディング、お祝い、ビジネスシーンなど、お花歴33年のひろみがご依頼者さまの想いを形にします。',
+    'ウェディングブーケやお祝いのフラワーアレンジを、お花歴33年のひろみがお作りします。サイズ別・素材別の料金をご案内しています。',
 }
 
-const SCENES = [
+const ORDER_CATEGORIES = [
   {
-    icon: '💒',
-    title: 'ウェディング',
-    body: 'ブーケ、ブートニア、会場装花など、お二人の門出を彩る特別なお花をお作りします。',
+    icon: '💐',
+    title: 'ウェディングブーケ',
+    body: 'お二人の門出を彩る、世界にひとつだけのブーケ。季節のお花を厳選してお作りします。',
+    plans: [
+      { label: 'Sサイズ', detail: '直径 約20cm', price: '20,000円〜' },
+      { label: 'Mサイズ', detail: '直径 約40cm', price: '40,000円〜' },
+      { label: 'Lサイズ', detail: '直径 約50cm', price: '60,000円〜' },
+    ],
   },
   {
     icon: '🎁',
-    title: 'お祝い・記念日',
-    body: 'お誕生日、母の日、還暦祝い… 大切な方への想いを、お花に込めてお届けします。',
-  },
-  {
-    icon: '🏢',
-    title: 'ビジネス・開店祝い',
-    body: 'スタンド花、アレンジメントなど、新しい門出をお祝いする華やかなお花をご用意します。',
+    title: 'お祝いフラワーアレンジ',
+    body: 'お誕生日、母の日、還暦祝いなど、大切な方への想いを形にしたアレンジメント。',
+    plans: [
+      { label: '造花', detail: '長く飾れるアーティフィシャルフラワー', price: '20,000円〜' },
+      { label: '生花', detail: '季節のお花を使った瑞々しい仕上がり', price: '15,000円〜' },
+    ],
   },
 ]
 
@@ -73,17 +77,35 @@ export default function OrderPage() {
         </div>
       </section>
 
-      {/* Scenes */}
+      {/* Order Categories & Pricing */}
       <section className="bg-surface-alt py-20">
         <div className="mx-auto max-w-[1080px] px-6">
-          <SectionTitle title="オーダーシーン" subtitle="さまざまな場面でのお花をお作りします。" />
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {SCENES.map((s) => (
-              <ScrollFadeIn key={s.title}>
-                <Card className="p-9 text-center">
-                  <div className="mb-2 text-4xl">{s.icon}</div>
-                  <h3 className="mb-2 font-display text-base font-medium">{s.title}</h3>
-                  <p className="text-sm text-text-sub">{s.body}</p>
+          <SectionTitle title="オーダーメニューと料金" subtitle="ご希望に合わせてお選びいただけます。" />
+          <div className="mx-auto grid max-w-[880px] grid-cols-1 gap-8 md:grid-cols-2">
+            {ORDER_CATEGORIES.map((cat) => (
+              <ScrollFadeIn key={cat.title}>
+                <Card className="flex h-full flex-col p-8">
+                  <div className="mb-3 text-center text-4xl">{cat.icon}</div>
+                  <h3 className="mb-3 text-center font-display text-lg font-medium">{cat.title}</h3>
+                  <p className="mb-6 text-center text-sm text-text-sub">{cat.body}</p>
+                  <table className="mt-auto w-full border-collapse text-sm">
+                    <tbody>
+                      {cat.plans.map((plan) => (
+                        <tr key={plan.label} className="border-b border-border last:border-b-0">
+                          <th className="whitespace-nowrap py-3 pr-3 text-left font-medium align-top">
+                            {plan.label}
+                          </th>
+                          <td className="py-3 pr-3 text-text-sub">{plan.detail}</td>
+                          <td className="whitespace-nowrap py-3 text-right font-medium">
+                            {plan.price}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  <p className="mt-4 text-xs text-text-sub">
+                    ※ 表記は税込価格の目安です。お花の種類やご要望により変動します。
+                  </p>
                 </Card>
               </ScrollFadeIn>
             ))}
