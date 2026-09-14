@@ -34,7 +34,7 @@ export default function HomePage() {
 
         <div className="relative z-10 max-w-[700px] px-6 py-10">
           <ScrollFadeIn>
-            <p className="mb-4 text-sm tracking-[0.15em] text-text-sub">HIROMI FLOWER DESIGN</p>
+            <p className="mb-4 text-xs tracking-[0.12em] text-text-sub sm:text-sm sm:tracking-[0.15em]">KUROKAWA HIROMI FLOWER DESIGN</p>
           </ScrollFadeIn>
 
           <ScrollFadeIn>

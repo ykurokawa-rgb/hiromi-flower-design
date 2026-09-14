@@ -6,7 +6,7 @@ import { ContactForm } from './_components/ContactForm'
 export const metadata: Metadata = {
   title: 'お問い合わせ',
   description:
-    'ひろみフラワーデザイン教室への体験お申し込み、オーダーのご相談、お問い合わせはこちらから。',
+    'くろかわひろみフラワーデザイン教室への体験お申し込み、オーダーのご相談、お問い合わせはこちらから。',
 }
 
 export default function ContactPage() {

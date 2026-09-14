@@ -35,9 +35,9 @@ export function Header() {
         }`}
         style={{ background: 'rgba(250, 249, 245, 0.92)' }}
       >
-        <div className="mx-auto flex h-[72px] max-w-[1080px] items-center justify-between px-6">
+        <div className="mx-auto flex h-[72px] max-w-[1080px] items-center justify-between gap-3 px-6">
           {/* Logo */}
-          <Link href="/" className="font-display text-lg font-semibold text-text-main whitespace-nowrap">
+          <Link href="/" className="font-display text-xs font-semibold text-text-main whitespace-nowrap min-[360px]:text-[13px] min-[400px]:text-[15px] sm:text-base lg:text-lg">
             <span className="text-primary">✿</span> {SITE_NAME}
           </Link>
 

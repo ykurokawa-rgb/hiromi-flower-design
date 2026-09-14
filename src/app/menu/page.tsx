@@ -8,7 +8,7 @@ import { PRICING, CLASSROOMS, LINE_URL } from '@/lib/constants'
 export const metadata: Metadata = {
   title: 'お花遊びのじかん',
   description:
-    'ひろみフラワーデザイン教室のメニュー、料金、当日の流れ、よくあるご質問をご紹介します。',
+    'くろかわひろみフラワーデザイン教室のメニュー、料金、当日の流れ、よくあるご質問をご紹介します。',
 }
 
 const MENUS = [
