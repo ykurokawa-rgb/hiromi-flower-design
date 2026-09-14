@@ -6,13 +6,13 @@ import { INSTRUCTOR } from '@/lib/constants'
 export const metadata: Metadata = {
   title: '教室について',
   description:
-    'ひろみフラワーデザイン教室の想いと、講師・ひろみのプロフィールをご紹介します。',
+    'くろかわひろみフラワーデザイン教室の想いと、講師・ひろみのプロフィールをご紹介します。',
 }
 
 export default function AboutPage() {
   return (
     <>
-      <PageHeader title="ひろみフラワーデザイン教室について" subtitle="教えるのではなく、一緒に遊ぶ。" />
+      <PageHeader title="くろかわひろみフラワーデザイン教室について" subtitle="教えるのではなく、一緒に遊ぶ。" />
 
       {/* Concept Message */}
       <section className="py-20">
@@ -68,7 +68,7 @@ export default function AboutPage() {
               >
                 <Image
                   src="/images/gallery-01-spring-pastel.jpg"
-                  alt="ひろみ - ひろみフラワーデザイン教室講師"
+                  alt="ひろみ - くろかわひろみフラワーデザイン教室講師"
                   width={1108}
                   height={1477}
                   className="h-full w-full object-cover"

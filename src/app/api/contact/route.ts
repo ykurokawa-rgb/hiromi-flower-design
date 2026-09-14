@@ -50,7 +50,7 @@ export async function POST(request: Request) {
 
   const resend = new Resend(apiKey)
 
-  const subject = `【ひろみフラワーデザイン教室】お問い合わせ${purpose ? ` - ${purpose}` : ''}`
+  const subject = `【くろかわひろみフラワーデザイン教室】お問い合わせ${purpose ? ` - ${purpose}` : ''}`
 
   const lines = [
     `ご用件: ${purpose || '（未選択）'}`,

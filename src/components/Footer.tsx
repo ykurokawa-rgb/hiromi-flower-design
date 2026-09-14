@@ -6,7 +6,7 @@ export function Footer() {
     <footer className="bg-surface-alt pt-12 pb-6 text-center">
       <div className="mx-auto max-w-[1080px] px-6">
         {/* Logo */}
-        <div className="mb-4 font-display text-lg font-semibold text-text-main">
+        <div className="mb-4 font-display text-base font-semibold text-text-main sm:text-lg">
           <span className="text-primary">✿</span> {SITE_NAME}
         </div>
 

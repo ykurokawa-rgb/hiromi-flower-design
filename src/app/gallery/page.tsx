@@ -7,7 +7,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'ギャラリー',
   description:
-    'ひろみフラワーデザイン教室の生徒さんたちの作品ギャラリーとお声をご紹介します。',
+    'くろかわひろみフラワーデザイン教室の生徒さんたちの作品ギャラリーとお声をご紹介します。',
 }
 
 const GALLERY_ITEMS = [
